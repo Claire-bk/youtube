@@ -4,10 +4,10 @@ import VideoCard from "../components/VideoCard";
 
 export default function Videos() {
   const [videoData, setVideoData] = useState();
-  const param = useParams();
+  const { keyword } = useParams();
 
   useEffect(() => {
-    const url = !param ? `/data/keyword.json` : "/data/popular.json";
+    const url = !keyword ? `/data/keyword.json` : "/data/popular.json";
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
