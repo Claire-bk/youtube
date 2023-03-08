@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function VideoCard(props) {
-  const [video, setVideo] = useState({});
-  const [videoId, setVideoId] = useState();
+export default function VideoCard({ video }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    console.log("id", videoId);
-    navigate(`/videos/watch/${videoId}`);
+    // navigate(`/videos/watch/${key}`);
   };
 
   useEffect(() => {
-    props.video && typeof props.video.id === "string"
-      ? setVideoId(props.video.id)
-      : setVideoId(props.video.id.videoId);
-    setVideo(props.video);
+    console.log(video);
   }, []);
 
   return (
