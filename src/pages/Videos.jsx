@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import VideoCard from "../components/VideoCard";
+import FakeYoutube, { search } from "../api/fakeYoutube";
 
 export default function Videos() {
   const { keyword } = useParams();
@@ -10,15 +10,10 @@ export default function Videos() {
     isLoading,
     error,
     data: videos,
-  } = useQuery(["videos", keyword], async () => {
-    return axios
-      .get(`/data/${keyword ? "keyword" : "popular"}.json`)
-      .then((res) => res.data.items);
+  } = useQuery(["videos", keyword], () => {
+    const youtube = new FakeYoutube();
+    return youtube.search(keyword);
   });
-
-  useEffect(() => {
-    console.log(keyword);
-  }, [keyword]);
 
   return (
     <div>
