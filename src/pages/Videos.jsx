@@ -1,31 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 import VideoCard from "../components/VideoCard";
 
 export default function Videos() {
-  const [videoData, setVideoData] = useState();
   const { keyword } = useParams();
   const {
     isLoading,
     error,
     data: videos,
   } = useQuery(["videos", keyword], async () => {
-    return fetch(`/data/${keyword ? "keyword" : "popular"}.json`)
-      .then((res) => res.json())
-      .then((data) => data.items);
+    return axios
+      .get(`/data/${keyword ? "keyword" : "popular"}.json`)
+      .then((res) => res.data.items);
   });
 
   useEffect(() => {
-    // const url = !keyword ? `/data/keyword.json` : "/data/popular.json";
-    const url = keyword ? `/data/keyword.json` : "/data/popular.json";
-    // ? `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResult=25&q=${keyword}&key=AIzaSyCDAWW8vWQXTjlzSjNlfPD242a_hJFq00Y`
-    // : `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResult=25&key=AIzaSyCDAWW8vWQXTjlzSjNlfPD242a_hJFq00Y`;
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setVideoData([...data.items]);
-      });
+    console.log(keyword);
   }, [keyword]);
 
   return (

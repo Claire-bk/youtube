@@ -9,7 +9,7 @@ export default function VideoCard({ video }) {
   };
 
   useEffect(() => {
-    console.log(video);
+    // console.log(video);
   }, []);
 
   return (
