@@ -7,14 +7,14 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="flex flex-col w-screen h-screen max-w-5xl items-center">
+    <>
       <SearchHeader />
       <YoutubeApiProvider>
         <QueryClientProvider client={queryClient}>
           <Outlet />
         </QueryClientProvider>
       </YoutubeApiProvider>
-    </div>
+    </>
   );
 }
 

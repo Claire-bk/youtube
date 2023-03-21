@@ -5,7 +5,7 @@ const mainWrapper =
   "w-full flex p-4 text-2xl border-b border-zinc-600 items-center justify-center";
 const logoWrapper = "flex items-center";
 const logoImg = "text-4xl text-brand";
-const logoText = "ml-2 text-3xl font-bold p-2";
+const logoText = "ml-2 text-3xl font-bold";
 const inputWrapper = "w-full flex justify-center";
 const inputField = "w-7/12 p-2 outline-none bg-black text-gray-50";
 const searchImg = "bg-zinc-600 px-4";
