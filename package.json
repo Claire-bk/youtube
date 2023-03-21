@@ -20,6 +20,7 @@
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
     "sort-by": "^1.2.0",
+    "timeago.js": "^4.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -45,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@tailwindcss/line-clamp": "^0.4.2"
   }
 }

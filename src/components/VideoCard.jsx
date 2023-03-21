@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { formatAgo } from "../util/date";
 
 export default function VideoCard({ video }) {
+  const { title, channelTitle, publishedAt, thumbnails } = video.snippet;
   const navigate = useNavigate();
 
   const handleClick = () => {
-    // navigate(`/videos/watch/${key}`);
+    navigate(`/videos/watch/${video.id}`, { state: { video } });
   };
 
   useEffect(() => {
@@ -13,25 +15,13 @@ export default function VideoCard({ video }) {
   }, []);
 
   return (
-    <div className="flex flex-col w-40 text-white" onClick={handleClick}>
-      {video.snippet && video.snippet.thumbnails && (
-        <img
-          className="max-w-3xl"
-          src={video.snippet.thumbnails.default.url}
-          alt=""
-        />
-      )}
-      {video.snippet && (
-        <p className="truncate pl-1 text-base font-medium">
-          {video.snippet.title}
-        </p>
-      )}
-      {video.snippet && (
-        <p className="truncate pl-1 text-xs">{video.snippet.channelTitle}</p>
-      )}
-      {video.snippet && (
-        <p className="truncate pl-1 text-xs">{video.snippet.publishedAt}</p>
-      )}
-    </div>
+    <li onClick={handleClick}>
+      <img className="w-full" src={thumbnails.medium.url} alt={title} />
+      <div>
+        <p className="font-semibold my-2 line-clamp-2">{title}</p>
+        <p className="opacity-80">{channelTitle}</p>
+        <p className="opacity-80">{formatAgo(publishedAt)}</p>
+      </div>
+    </li>
   );
 }
