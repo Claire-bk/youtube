@@ -16,7 +16,7 @@ export default function RelatedVideos({ id }) {
   return (
     <>
       {isLoading && <p>Loading...</p>}
-      {error && <p>Somethig is wrong...😖</p>}
+      {error && <p>Something is wrong...😖</p>}
       {videos && (
         <ul>
           {videos.map((video) => (
