@@ -1,7 +1,6 @@
 # youtube Clone coding
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-https://gilded-blini-dd45fc.netlify.app
 
 ## Available Scripts
 
